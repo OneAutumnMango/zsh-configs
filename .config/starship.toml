@@ -1,0 +1,59 @@
+[character]
+success_symbol = "[›](bold green)"
+error_symbol = "[›](bold red)"
+vimcmd_symbol = "[‹](bold green)"
+vimcmd_replace_one_symbol = "[‹](bold purple)"
+vimcmd_replace_symbol = "[‹](bold purple)"
+vimcmd_visual_symbol = "[‹](bold yellow)"
+
+[cmd_duration]
+show_milliseconds = true
+format = '[$duration]($style) '
+show_notifications = false
+min_time_to_notify = 5
+
+[directory.substitutions]
+'~' = 'C:\Users\david'
+'C:/msys64/home/david' = '~'
+
+[c]
+disabled = true
+
+[swift]
+disabled = true
+
+[golang]
+disabled = true
+
+[java]
+disabled = true
+
+[nodejs]
+disabled = true
+
+[ruby]
+disabled = true
+
+[rust]
+disabled = true
+
+[dotnet]
+disabled = true
+
+[perl]
+disabled = true
+
+[haskell]
+disabled = true
+
+[php]
+disabled = true
+
+[zig]
+disabled = true
+
+[ocaml]
+disabled = true
+
+[scala]
+disabled = true

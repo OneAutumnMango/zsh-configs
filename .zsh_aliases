@@ -1,0 +1,26 @@
+alias aliases='nano ~/.zsh_aliases && source ~/.zsh_aliases'
+alias funcs='nano ~/.zsh_functions && source ~/.zsh_functions'
+
+# venvs
+alias venv='source .venv/Scripts/activate'
+alias deact=deactivate
+
+# jupyter
+alias {jn,jnotebook}='nohup jupyter notebook &> /dev/null & disown'
+alias {jns,jnstop}='jupyter notebook stop'
+
+# git
+alias gitVerboseSSH='export GIT_SSH_COMMAND="ssh -vvv"'
+alias gitResetSSH='unset GIT_SSH_COMMAND'
+alias gitExclude='nano .git/info/exclude'
+
+# docker
+alias dcu='docker compose up'
+alias dcd='docker compose down'
+alias dcr='docker compose restart'
+
+# misc
+alias zq='zoxide query -ls'
+alias ll='ls -alF'
+alias l='ls -CF'
+alias la='ls -A'

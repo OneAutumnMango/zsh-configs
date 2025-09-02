@@ -1,0 +1,86 @@
+# list files in the current directory
+list() {
+    local depth=1
+    while [ "$1" != "" ]; do
+        case $1 in
+            -d | --depth ) shift; depth=$1 ;;
+            *            ) break ;;
+        esac
+        shift
+    done
+    echo "executing 'find -maxdepth $depth -name \"$1\"'"
+    find -maxdepth $depth -name "$1"
+}
+
+# find text within files
+findin() {
+    local caseSensitive=0
+    local dir=""
+    local searchString=""
+
+    for arg in "$@"
+    do
+        if [[ $arg == "-i" ]]; then
+            caseSensitive=1
+        elif [[ -z $dir ]]; then
+            dir=$arg
+        else
+            searchString=$arg
+        fi
+    done
+
+    find "$dir" -type f -exec awk -v pat="$searchString" -v ic="$caseSensitive" '
+        BEGIN{IGNORECASE=ic; lastFile=""}
+        {
+            if($0 ~ pat) {
+                if(FILENAME != lastFile) {
+                    if(lastFile != "") print lines;
+                    printf("%s:", FILENAME);
+                    lines = FNR;
+                    lastFile = FILENAME;
+                } else {
+                    lines = lines "," FNR;
+                }
+            }
+        }
+        END{if(lastFile != "") print lines}
+    ' {} \;
+}
+
+# print the lines from the output of findin() -> "path/to/file.c:1,2,3,4,26"
+printlines() {
+    local printLineNumbers=""
+    local input=""
+
+    for arg in "$@"
+    do
+        if [[ $arg == "-n" ]]; then
+            printLineNumbers="-n"
+        else
+            input=$arg
+        fi
+    done
+
+    local filePath=$(echo $input | cut -d ':' -f 1)
+    local lineNumbers=$(echo $input | cut -d ':' -f 2)
+
+    IFS=',' read -ra nums <<< "$lineNumbers"
+    for num in "${nums[@]}"; do
+        if [[ $printLineNumbers == "-n" ]]; then
+            echo -ne "$num:\t"
+        fi
+        sed "${num}q;d" $filePath
+    done
+}
+pl() {  # optional alias
+    printlines "$@" 
+}
+
+open() {  # pair with 'alias start=_start'
+    dir="${@//\//\\\\}"
+    command start "$dir"
+}
+
+mkcd () {
+    mkdir -p "$1" && cd "$1"
+}

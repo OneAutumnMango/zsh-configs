@@ -1,10 +1,11 @@
 #!/bin/sh
 
+sudo apt update
 sudo apt install -y zsh fzf
 
 # script directory
 
-cp .config/ ~/.config
+cp -r .config/ ~/.config
 cp .zsh* ~
 
 cd ~

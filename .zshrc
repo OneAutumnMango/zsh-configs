@@ -1,6 +1,6 @@
 export STARSHIP_CONFIG=~/.config/starship.toml
 
-source ~/antigen.zsh
+source ~/.antigen.zsh
 
 antigen use oh-my-zsh
 
@@ -28,17 +28,16 @@ if [ -f ~/.zsh_functions ]; then
     . ~/.zsh_functions
 fi
 eval "$(zoxide init zsh --cmd cd)"
-source <(fzf --zsh)
+# source <(fzf --zsh)
 eval "$(starship init zsh)"
 set +o histexpand  # remove ! as history expansion
 
 
 #PS1='%F{cyan}%B%~%b%f %F{green}%B>%b%f '
 
-export PATH="/c/tools/TinyTeX/bin/windows:$PATH"
-#export PATH="$PATH:/c/Windows/System32"
+# export PATH="/c/tools/TinyTeX/bin/windows:$PATH"
+# export PATH="$PATH:/c/Windows/System32"
+# export PATH="$PATH:$HOME/.local/bin"
 
-#powershell -Command "w32tm /resync"
-
-bindkey "^H" backward-kill-word   # ctrl+backspace
-bindkey "5~" kill-word            # ctrl+del%                                                                                     
+# bindkey "^H" backward-kill-word   # ctrl+backspace
+# bindkey "5~" kill-word            # ctrl+del%                                                                                     

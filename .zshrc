@@ -1,4 +1,5 @@
 export STARSHIP_CONFIG=~/.config/starship.toml
+export PATH="$PATH:$HOME/.local/bin"
 
 source ~/.antigen.zsh
 
@@ -37,7 +38,6 @@ set +o histexpand  # remove ! as history expansion
 
 # export PATH="/c/tools/TinyTeX/bin/windows:$PATH"
 # export PATH="$PATH:/c/Windows/System32"
-# export PATH="$PATH:$HOME/.local/bin"
 
 # bindkey "^H" backward-kill-word   # ctrl+backspace
 # bindkey "5~" kill-word            # ctrl+del%                                                                                     

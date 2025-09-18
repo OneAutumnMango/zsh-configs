@@ -38,7 +38,7 @@ jobs:
           echo "Checking ~/.gitconfig"
           [ -f ~/.gitconfig ]
           echo "Checking ~/.config/starship.toml"
-[
+          [ -f ~/.config/starship.toml ]
 
 
               

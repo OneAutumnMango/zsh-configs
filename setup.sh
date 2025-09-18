@@ -1,16 +1,22 @@
 #!/bin/sh
 
+set -e
+
 sudo apt update
 sudo apt install -y zsh fzf
 
-cp -r .config/ ~/.config
-cp .zsh* ~
+TMPDIR=$(mktemp -d)
+curl -L https://github.com/OneAutumnMango/zsh-configs/archive/refs/heads/master.tar.gz -o "$TMPDIR/zsh-configs.tar.gz"
+tar -xzf "$TMPDIR/zsh-configs.tar.gz" -C "$TMPDIR"
 
-SCRIPT_DIR="$(cd -- "$(dirname -- "$0")" && pwd)"
-cd ~
+REPO_DIR="$TMPDIR/zsh-configs-master"
 
-curl -L git.io/antigen > .antigen.zsh
+cp "$REPO_DIR/.zsh*" ~/
+cp -r "$REPO_DIR/.config/" ~/.config
+cp "$REPO_DIR/.gitconfig" ~/.gitconfig
+
+curl -L git.io/antigen > ~/.antigen.zsh
 curl -sS https://starship.rs/install.sh | sh -s -- -y
 curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
 
-rm -rf "$SCRIPT_DIR"
+rm -rf "$TMPDIR"

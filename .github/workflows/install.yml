@@ -1,0 +1,39 @@
+name: Install and Test
+
+on:
+  workflow_dispatch:
+
+  push:
+    branches: [ master ]
+  
+jobs:
+  install:
+    name: Install
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install
+        run: |
+          curl -Ss https://raw.githubusercontent.com/OneAutumnMango/zsh-configs/master/setup.sh | sh
+      
+      - name: Verify ZSH
+        run: exec zsh
+
+      - name: Verify Starship
+        run: exec starship init zsh
+
+      - name: Verify Zoxide
+        run: exec zoxide init zsh
+
+      - name: Verify Files
+        run: |
+          [ -f ~/.zsh_aliases ] && 
+          [ -f ~/.zsh_functions ] &&
+          [ -f ~/.zshrc ] &&
+          [ -f ~/.gitconfig ] &&
+          [ -f ~/.config/starship.toml ]
+
+
+              

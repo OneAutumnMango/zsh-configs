@@ -1,0 +1,7 @@
+[alias]
+	lgl =  log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+	lg  =  log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' -n 10
+[core]
+	autocrlf = input
+# [url "git@github.com:"]
+#         insteadOf = https://github.com/

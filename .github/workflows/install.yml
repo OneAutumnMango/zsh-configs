@@ -29,11 +29,16 @@ jobs:
 
       - name: Verify Files
         run: |
-          [ -f ~/.zsh_aliases ] && 
-          [ -f ~/.zsh_functions ] &&
-          [ -f ~/.zshrc ] &&
-          [ -f ~/.gitconfig ] &&
-          [ -f ~/.config/starship.toml ]
+          echo "Checking ~/.zsh_aliases"
+          [ -f ~/.zsh_aliases ]
+          echo "Checking ~/.zsh_functions"
+          [ -f ~/.zsh_functions ]
+          echo "Checking ~/.zshrc"
+          [ -f ~/.zshrc ]
+          echo "Checking ~/.gitconfig"
+          [ -f ~/.gitconfig ]
+          echo "Checking ~/.config/starship.toml"
+[
 
 
               

@@ -11,9 +11,9 @@ tar -xzf "$TMPDIR/zsh-configs.tar.gz" -C "$TMPDIR"
 
 REPO_DIR="$TMPDIR/zsh-configs-main"
 
-cp "$REPO_DIR/.zsh*" ~/
-cp -r "$REPO_DIR/.config/" ~/.config
-cp "$REPO_DIR/.gitconfig" ~/.gitconfig
+cp $REPO_DIR/.zsh* ~/
+cp -r $REPO_DIR/.config/ ~/.config
+cp $REPO_DIR/.gitconfig ~/.gitconfig
 
 curl -L git.io/antigen > ~/.antigen.zsh
 curl -sS https://starship.rs/install.sh | sh -s -- -y

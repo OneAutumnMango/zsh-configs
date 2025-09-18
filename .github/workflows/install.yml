@@ -14,18 +14,25 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Install
+      - name: Run install script
         run: |
-          curl -Ss https://raw.githubusercontent.com/OneAutumnMango/zsh-configs/master/setup.sh | sh
+          if [ "${ACT}" = "true" ]; then
+            sh setup.sh
+          else
+            curl -sS https://raw.githubusercontent.com/OneAutumnMango/zsh-configs/main/setup.sh | sh
+          fi
       
-      - name: Verify ZSH
-        run: exec zsh
+      - name: Verify Zsh
+        run:
+          command -v zsh >/dev/null 2>&1 && echo "zsh is installed" || exit 1
 
       - name: Verify Starship
         run: exec starship init zsh
 
       - name: Verify Zoxide
-        run: exec zoxide init zsh
+        run: |
+          export PATH="$PATH:$HOME/.local/bin"
+          exec zoxide init zsh
 
       - name: Verify Files
         run: |

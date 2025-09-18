@@ -36,6 +36,7 @@ jobs:
 
       - name: Verify Files
         run: |
+          set -e
           echo "Checking ~/.zsh_aliases"
           [ -f ~/.zsh_aliases ]
           echo "Checking ~/.zsh_functions"

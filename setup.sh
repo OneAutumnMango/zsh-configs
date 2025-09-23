@@ -3,7 +3,7 @@
 set -e
 
 sudo apt update
-sudo apt install -y zsh fzf
+sudo apt install -y zsh fzf git tree nano bind9-dnsutils
 
 TMPDIR=$(mktemp -d)
 curl -L https://github.com/OneAutumnMango/zsh-configs/archive/refs/heads/main.tar.gz -o "$TMPDIR/zsh-configs.tar.gz"

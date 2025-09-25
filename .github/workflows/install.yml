@@ -37,16 +37,11 @@ jobs:
       - name: Verify Files
         run: |
           set -e
-          echo "Checking ~/.zsh_aliases"
-          [ -f ~/.zsh_aliases ]
-          echo "Checking ~/.zsh_functions"
-          [ -f ~/.zsh_functions ]
-          echo "Checking ~/.zshrc"
-          [ -f ~/.zshrc ]
-          echo "Checking ~/.gitconfig"
-          [ -f ~/.gitconfig ]
-          echo "Checking ~/.config/starship.toml"
-          [ -f ~/.config/starship.toml ]
+          [ ! -f ~/.zsh_aliases ]          && { echo "~/.zsh_aliases not found"; exit 1; }
+          [ ! -f ~/.zsh_functions ]        && { echo "~/.zsh_functions not found"; exit 1; }
+          [ ! -f ~/.zshrc ]                && { echo "~/.zshrc not found"; exit 1; }
+          [ ! -f ~/.gitconfig ]            && { echo "~/.gitconfig not found"; exit 1; }
+          [ ! -f ~/.config/starship.toml ] && { echo "~/.config/starship.toml not found"; exit 1; }
 
 
               

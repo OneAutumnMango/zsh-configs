@@ -5,7 +5,7 @@ on:
 
   push:
     branches: [ main ]
-  
+
 jobs:
   install:
     name: Install
@@ -21,7 +21,7 @@ jobs:
           else
             curl -sS https://raw.githubusercontent.com/OneAutumnMango/zsh-configs/main/setup.sh | sh
           fi
-      
+
       - name: Verify Zsh
         run:
           command -v zsh >/dev/null 2>&1 && echo "zsh is installed" || exit 1
@@ -37,11 +37,9 @@ jobs:
       - name: Verify Files
         run: |
           set -e
-          [ ! -f ~/.zsh_aliases ]          && { echo "~/.zsh_aliases not found"; exit 1; }
-          [ ! -f ~/.zsh_functions ]        && { echo "~/.zsh_functions not found"; exit 1; }
-          [ ! -f ~/.zshrc ]                && { echo "~/.zshrc not found"; exit 1; }
-          [ ! -f ~/.gitconfig ]            && { echo "~/.gitconfig not found"; exit 1; }
-          [ ! -f ~/.config/starship.toml ] && { echo "~/.config/starship.toml not found"; exit 1; }
+          [ -f "$HOME/.zsh_aliases" ]          && echo "  $HOME/.zsh_aliases Found" || { echo "  ❌ Missing ($HOME/.zsh_aliases)";          ls -l "$HOME" || true; exit 1; }
+          [ -f "$HOME/.zsh_functions" ]        && echo "  $HOME/.zsh_functions Found" || { echo "  ❌ Missing ($HOME/.zsh_functions)";        ls -l "$HOME" || true; exit 1; }
+          [ -f "$HOME/.zshrc" ]                && echo "  $HOME/.zshrc Found" || { echo "  ❌ Missing ($HOME/.zshrc)";                ls -l "$HOME" || true; exit 1; }
+          [ -f "$HOME/.gitconfig" ]            && echo "  $HOME/.gitconfig Found" || { echo "  ❌ Missing ($HOME/.gitconfig)";            ls -l "$HOME" || true; exit 1; }
+          [ -f "$HOME/.config/starship.toml" ] && echo "  $HOME/.config/starship.toml Found" || { echo "  ❌ Missing ($HOME/.config/starship.toml)"; ls -l "$HOME/.config" || true; exit 1; }
 
-
-              

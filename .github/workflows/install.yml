@@ -43,3 +43,7 @@ jobs:
           [ -f "$HOME/.gitconfig" ]            && echo "  $HOME/.gitconfig Found" || { echo "  ❌ Missing ($HOME/.gitconfig)";            ls -l "$HOME" || true; exit 1; }
           [ -f "$HOME/.config/starship.toml" ] && echo "  $HOME/.config/starship.toml Found" || { echo "  ❌ Missing ($HOME/.config/starship.toml)"; ls -l "$HOME/.config" || true; exit 1; }
 
+      - name: Verify .zshrc Sourcing
+        run: |
+          set -e
+          source "$HOME/.zshrc"

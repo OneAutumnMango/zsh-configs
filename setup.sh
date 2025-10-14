@@ -16,7 +16,7 @@ cp -r $REPO_DIR/.config/ ~/.config
 cp $REPO_DIR/.gitconfig ~/.gitconfig
 
 curl -L git.io/antigen > ~/.antigen.zsh
-curl -sS https://starship.rs/install.sh | sh -s -- -y
+curl -sS https://starship.rs/install.sh | sh -s -- -y -b "$HOME/.local/bin"
 curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
 
 rm -rf "$TMPDIR"

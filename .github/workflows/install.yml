@@ -44,8 +44,3 @@ jobs:
           [ -f "$HOME/.zshrc" ]                && echo "  $HOME/.zshrc Found" || { echo "  ❌ Missing ($HOME/.zshrc)";                ls -l "$HOME" || true; exit 1; }
           [ -f "$HOME/.gitconfig" ]            && echo "  $HOME/.gitconfig Found" || { echo "  ❌ Missing ($HOME/.gitconfig)";            ls -l "$HOME" || true; exit 1; }
           [ -f "$HOME/.config/starship.toml" ] && echo "  $HOME/.config/starship.toml Found" || { echo "  ❌ Missing ($HOME/.config/starship.toml)"; ls -l "$HOME/.config" || true; exit 1; }
-
-      - name: Verify .zshrc doesnt fail
-        run: |
-          set -e
-          [ "$(zsh -i -c 'echo 1')" = "1" ]

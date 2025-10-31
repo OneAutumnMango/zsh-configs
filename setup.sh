@@ -12,7 +12,7 @@ tar -xzf "$TMPDIR/zsh-configs.tar.gz" -C "$TMPDIR"
 REPO_DIR="$TMPDIR/zsh-configs-main"
 
 cp $REPO_DIR/.zsh* ~/
-cp -r $REPO_DIR/.config/ ~/.config
+cp -r $REPO_DIR/.config/ ~/
 cp $REPO_DIR/.gitconfig ~/.gitconfig
 
 mkdir -p "$HOME/.local/bin"

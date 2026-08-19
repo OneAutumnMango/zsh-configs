@@ -33,6 +33,8 @@ eval "$(zoxide init zsh --cmd cd)"
 eval "$(starship init zsh)"
 set +o histexpand  # remove ! as history expansion
 
+source /usr/share/doc/fzf/examples/key-bindings.zsh
+source /usr/share/doc/fzf/examples/completion.zsh
 
 #PS1='%F{cyan}%B%~%b%f %F{green}%B>%b%f '
 
